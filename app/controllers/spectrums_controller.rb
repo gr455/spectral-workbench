@@ -226,6 +226,9 @@ class SpectrumsController < ApplicationController
       end
  
       if @spectrum.save
+        if params[:vertical]
+          @spectrum.rotate
+        end
  
         respond_with(@spectrum) do |format|
  
