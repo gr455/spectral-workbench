@@ -1,12 +1,14 @@
 language: ruby
 
-dist: trusty
-
 rvm:
   - 2.1.2
 
 node_js:
   - "0.10.29"
+
+env:
+  global:
+    - RAILS_ENV=test
 
 services:
   - docker
@@ -31,7 +33,7 @@ install:
 jobs:
   include:
     - name: "All Tests"
-      script: bundle exec bundle exec rake test_all
+      xscript: bundle exec bundle exec rake test_all
     - name: "Docker Builds"
       script: docker build -t swbench .
     - name: "Asset Precompilation"
